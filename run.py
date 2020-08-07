@@ -20,6 +20,7 @@ links = str(f.read())
 print(links)
 links = links.replace('b\'', '')
 links = links.replace('\'', '')
+links = links.replace('\\n', '')
 print(links)
 f.close()
 if (len(links) >= 2):
