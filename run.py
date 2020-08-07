@@ -38,13 +38,13 @@ with open(file_name, 'w') as file_obj:
             localtime = utcTime + datetime.timedelta(hours=8)
             localtime = str(localtime)
             print(urls[i] + '：' + localtime)
-            file_obj.write(urls[i] + '：' + localtime + '\n')
+            file_obj.write(urls[i] + ': ' + localtime + '\n')
         except error.URLError as e:
             try:
                 # 如果网站返回错误，则写入url，code,错误原因
-                print(urls[i] + '：活跃时间未知')
-                file_obj.write(item + '：' + "ERROR" + '\n')
+                print(urls[i] + ': 活跃时间未知')
+                file_obj.write(urls[i] + ': ERROR' + '\n')
             except:
                 # 如果服务器不存在则写入url,错误原因
                 print(urls[i] + '：活跃时间未知')
-                file_obj.write(item + '：' + "ERROR" + '\n')
+                file_obj.write(urls[i] + ': ERROR' + '\n')
