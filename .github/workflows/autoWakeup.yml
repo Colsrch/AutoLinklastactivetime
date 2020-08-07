@@ -10,7 +10,7 @@ on:
   #  branches: 
   #    - master
   schedule:
-    - cron: "*/20 7-23 * * *"
+    - cron: "*/20 0-23 * * *"
   watch:
     types: [started]
    
@@ -30,10 +30,8 @@ jobs:
         pip install requests
         pip install bs4
     - name: Waking  #读取站点信息
-      env: 
-        $CONFIG_SITE: ${{ secrets.Site }} # 读取友链地址
       run: | 
-        python run.py ${{ secrets.Site }}
+        python run.py
     - name: Commit #更新日志到GitHub仓库
       run: |
         git config --global user.email AutoWakeUp@email.com
