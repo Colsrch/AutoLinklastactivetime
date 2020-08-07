@@ -1,5 +1,4 @@
 import requests
-import sys
 import random
 import re
 import datetime
@@ -15,12 +14,19 @@ header = [
     {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'},
     {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)'}
 ]
-
-if (len(sys.argv) >= 2):
-    urls = sys.argv[1].split(',')
+f = open('link.txt', 'rb')
+# 读取友链链接
+links = str(f.read())
+print(links)
+links = links.replace('b\'', '')
+links = links.replace('\'', '')
+print(links)
+f.close()
+if (len(links) >= 2):
+    urls = links.split(',')
 else:
     urls = ['https://colsrch.top']
-file_name = 'friends.txt'
+file_name = 'time.txt'
 utime = '+'
 with open(file_name, 'w') as file_obj:
     for i in range(0, len(urls)):
@@ -52,3 +58,4 @@ with open(file_name, 'w') as file_obj:
                 # 如果服务器不存在则写入url,错误原因
                 print(urls[i] + '：活跃时间未知')
                 file_obj.write(urls[i] + ': ERROR' + '\n')
+    file_obj.close()
