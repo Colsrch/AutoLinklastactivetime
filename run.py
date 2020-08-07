@@ -41,8 +41,8 @@ with open(file_name, 'w') as file_obj:
                 utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
                 localtime = utcTime + datetime.timedelta(hours=8)
                 time = str(localtime)
-            print(urls[i] + '：' + time)
-            file_obj.write(urls[i] + ': ' + time + '\n')
+                print(urls[i] + '：' + time)
+                file_obj.write(urls[i] + ': ' + time + '\n')
         except error.URLError as e:
             try:
                 # 如果网站返回错误，则写入url，code,错误原因
