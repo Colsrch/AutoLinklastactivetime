@@ -36,4 +36,4 @@ https://dove1242.github.io: ERROR
 https://www.boolo.top: 2020-08-04 12:31:22.538000
 https://lusuzi.github.io: 2020-08-06 12:59:14.729000
 https://pdoner.cn: 2020-08-06 08:45:02.747000
-https://heson.xyz\n: ERROR
+https://heson.xyz: ERROR
