@@ -34,5 +34,5 @@ with open(file_name, 'w') as file_obj:
         utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
         localtime = utcTime + datetime.timedelta(hours=8)
         localtime = str(localtime)
-        print(item + '：' + localtime)
-        file_obj.write(item + '：' + localtime + '\n')
+        print(urls[i] + '：' + localtime)
+        file_obj.write(urls[i] + '：' + localtime + '\n')
