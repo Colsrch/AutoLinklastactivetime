@@ -21,7 +21,7 @@ if (len(sys.argv) >= 2):
 else:
     urls = ['https://colsrch.top']
 file_name = 'friends.txt'
-utime = 'T'
+utime = '+'
 with open(file_name, 'w') as file_obj:
     for i in range(0, len(urls)):
         link = urls[i] + '/atom.xml'
@@ -35,6 +35,8 @@ with open(file_name, 'w') as file_obj:
             time = time.replace('<updated>', '')
             time = time.replace('</updated>', '')
             if utime in time:
+                print(urls[i] + "不支持的时间格式")
+            else:
                 UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
                 utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
                 localtime = utcTime + datetime.timedelta(hours=8)
