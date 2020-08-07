@@ -1,6 +1,7 @@
 import requests
 import random
 import re
+import datetime
 from bs4 import BeautifulSoup
 from urllib import error, request
 
@@ -40,6 +41,13 @@ with open(file_name, 'w') as file_obj:
             time = str(time)
             time = time.replace('<updated>', '')
             time = time.replace('</updated>', '')
+            if utime in time:
+                print(urls[i] + "不支持的时间格式（直接截取）")
+            else:
+                UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
+                utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
+                localtime = utcTime + datetime.timedelta(hours=8)
+                time = str(localtime)
             time = time.replace('-', '')
             time = time[0:4] + '年' + time[4:6] + '月' + time[6:8] + '日'
             print(urls[i] + '：' + time)
