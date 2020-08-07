@@ -19,7 +19,7 @@ header = [
 if (len(sys.argv) >= 2):
     urls = sys.argv[1].split(',')
 else:
-    urls = ['https://colsrch.top/']
+    urls = ['https://colsrch.top']
 file_name = 'friends.txt'
 with open(file_name, 'w') as file_obj:
     for i in range(0, len(urls)):
