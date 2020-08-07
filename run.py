@@ -48,6 +48,8 @@ with open(file_name, 'w') as file_obj:
                 utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
                 localtime = utcTime + datetime.timedelta(hours=8)
                 time = str(localtime)
+                time = time.replace('-', '')
+                time = time[0,3] + '年' + time[4,5] + '月' + time[6,7] + '日'
                 print(urls[i] + '：' + time)
                 file_obj.write(urls[i] + ': ' + time + '\n')
         except error.URLError as e:
