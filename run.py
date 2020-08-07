@@ -21,6 +21,7 @@ if (len(sys.argv) >= 2):
 else:
     urls = ['https://colsrch.top']
 file_name = 'friends.txt'
+utime = 'T'
 with open(file_name, 'w') as file_obj:
     for i in range(0, len(urls)):
         link = urls[i] + '/atom.xml'
@@ -33,12 +34,13 @@ with open(file_name, 'w') as file_obj:
             time = str(time)
             time = time.replace('<updated>', '')
             time = time.replace('</updated>', '')
-            UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
-            utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
-            localtime = utcTime + datetime.timedelta(hours=8)
-            localtime = str(localtime)
-            print(urls[i] + '：' + localtime)
-            file_obj.write(urls[i] + ': ' + localtime + '\n')
+            if utime in time:
+                UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
+                utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
+                localtime = utcTime + datetime.timedelta(hours=8)
+                time = str(localtime)
+            print(urls[i] + '：' + time)
+            file_obj.write(urls[i] + ': ' + time + '\n')
         except error.URLError as e:
             try:
                 # 如果网站返回错误，则写入url，code,错误原因
