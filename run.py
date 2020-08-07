@@ -4,6 +4,7 @@ import random
 import re
 import datetime
 from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
 header = [
     {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 '
@@ -23,16 +24,21 @@ file_name = 'friends.txt'
 with open(file_name, 'w') as file_obj:
     for i in range(0, len(urls)):
         link = urls[i] + '/atom.xml'
-        session = requests.session()
-        html = session.get(link)
-        content = BeautifulSoup(html.content, 'html.parser')
-        time = BeautifulSoup(str(content), 'html.parser').find('updated')
-        time = str(time)
-        time = time.replace('<updated>', '')
-        time = time.replace('</updated>', '')
-        UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
-        utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
-        localtime = utcTime + datetime.timedelta(hours=8)
-        localtime = str(localtime)
-        print(urls[i] + '：' + localtime)
-        file_obj.write(urls[i] + '：' + localtime + '\n')
+        resp = urlopen(link)
+        code = resp.getcode()
+        if code == 200:
+            session = requests.session()
+            html = session.get(link)
+            content = BeautifulSoup(html.content, 'html.parser')
+            time = BeautifulSoup(str(content), 'html.parser').find('updated')
+            time = str(time)
+            time = time.replace('<updated>', '')
+            time = time.replace('</updated>', '')
+            UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
+            utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
+            localtime = utcTime + datetime.timedelta(hours=8)
+            localtime = str(localtime)
+            print(urls[i] + '：' + localtime)
+            file_obj.write(urls[i] + '：' + localtime + '\n')
+        else:
+            print('该站点未检测到atom.xml：' + item)
