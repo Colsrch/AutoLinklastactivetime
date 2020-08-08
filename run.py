@@ -49,7 +49,7 @@ with open(file_name, 'w') as file_obj:
             elif none in time:
                 # 如果网站返回错误，则写入url，code,错误原因
                 print(urls[i] + ': 活跃时间未知')
-                file_obj.write(urls[i] + ': ERROR' + '\n')
+                file_obj.write(urls[i] + ': 活跃时间未知' + '\n')
             else:
                 UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
                 utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
@@ -63,7 +63,7 @@ with open(file_name, 'w') as file_obj:
             try:
                 # 如果网站返回错误，则写入url，code,错误原因
                 print(urls[i] + ': 活跃时间未知')
-                file_obj.write(urls[i] + ': ERROR' + '\n')
+                file_obj.write(urls[i] + ': 活跃时间未知' + '\n')
             except:
                 # 如果服务器不存在则写入url,错误原因
                 print(urls[i] + '：服务器不存在')
