@@ -36,8 +36,12 @@ with open(file_name, 'w') as file_obj:
             session = requests.session()
             html = session.get(link)
             content = BeautifulSoup(html.content, 'html.parser')
+            name = BeautifulSoup(str(content), 'html.parser').find('title')
             time = BeautifulSoup(str(content), 'html.parser').find('updated')
+            name = str(name)
             time = str(time)
+            name = name.replace('<title>', '')
+            name = name.replace('</title>', '')
             time = time.replace('<updated>', '')
             time = time.replace('</updated>', '')
             if utime in time:
@@ -45,11 +49,11 @@ with open(file_name, 'w') as file_obj:
                 time = time.replace('-', '')
                 time = time[0:4] + '年' + time[4:6] + '月' + time[6:8] + '日'
                 print(urls[i] + '：' + time)
-                file_obj.write(urls[i] + ': ' + time + '\n')
+                file_obj.write('- name: ' + name + '\n  times: ' + time + '\n')
             elif none in time:
                 # 如果网站返回错误，则写入url，code,错误原因
                 print(urls[i] + ': 活跃时间未知')
-                file_obj.write(urls[i] + ': 活跃时间未知' + '\n')
+                file_obj.write('- name: ' + name + '\n  times: 活跃时间未知\n')
             else:
                 UTC_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"
                 utcTime = datetime.datetime.strptime(time, UTC_FORMAT)
@@ -58,14 +62,14 @@ with open(file_name, 'w') as file_obj:
                 time = time.replace('-', '')
                 time = time[0:4] + '年' + time[4:6] + '月' + time[6:8] + '日'
                 print(urls[i] + '：' + time)
-                file_obj.write(urls[i] + ': ' + time + '\n')
+                file_obj.write('- name: ' + name + '\n  times: ' + time + '\n')
         except error.URLError as e:
             try:
                 # 如果网站返回错误，则写入url，code,错误原因
                 print(urls[i] + ': 活跃时间未知')
-                file_obj.write(urls[i] + ': 活跃时间未知' + '\n')
+                file_obj.write('- name: ' + name + '\n  times: 活跃时间未知\n')
             except:
                 # 如果服务器不存在则写入url,错误原因
                 print(urls[i] + '：服务器不存在')
-                file_obj.write(urls[i] + ': NOSERVER' + '\n')
+                file_obj.write('- name: ' + name + '\n  times: 无法访问\n')
     file_obj.close()
