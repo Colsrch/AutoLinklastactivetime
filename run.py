@@ -14,13 +14,12 @@ header = [
     {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'},
     {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)'}
 ]
-f = open('link.txt', 'rb')
+f = open('link.txt', 'r')
 # 读取友链链接
 links = str(f.read())
 print(links)
-links = links.replace('b\'', '')
-links = links.replace('\'', '')
-links = links.replace('\\n', '')
+links = links.replace('\n', '')
+links = links.replace('\r', '')
 print(links)
 f.close()
 if (len(links) >= 2):
@@ -59,6 +58,6 @@ with open(file_name, 'w') as file_obj:
                 file_obj.write(urls[i] + ': ERROR' + '\n')
             except:
                 # 如果服务器不存在则写入url,错误原因
-                print(urls[i] + '：活跃时间未知')
-                file_obj.write(urls[i] + ': ERROR' + '\n')
+                print(urls[i] + '：服务器不存在')
+                file_obj.write(urls[i] + ': NOSERVER' + '\n')
     file_obj.close()
