@@ -30,11 +30,8 @@ jobs:
         pip install requests
         pip install bs4
     - name: Waking  #读取站点信息
-      env: 
-        $CONFIG_SITE: ${{ secrets.Site }} # 读取评论后台地址
       run: | 
         python run.py
-        echo `${{ secrets.Site }}` > CNAME
     - name: Commit #更新日志到GitHub仓库
       run: |
         git config --global user.email AutoWakeUp@email.com
