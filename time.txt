@@ -13,7 +13,7 @@ https://cndrew.cn: 2020年07月23日
 https://www.tespera.com: ERROR
 https://www.antmoe.com: 2020年08月07日
 https://geniucker.js.org: 2020年07月23日
-https://yunist.cn: 2020年08月05日
+https://yunist.cn: 2020年08月08日
 https://blog.ninglans.top: 2020年07月17日
 https://howsyc.cn: ERROR
 https://reinness.com: ERROR
@@ -28,7 +28,7 @@ https://7bxing.com: ERROR
 https://blog.cyfan.top: ERROR
 https://lovelijunyi.gitee.io: ERROR
 https://snow.js.org: ERROR
-https://kali65536.github.io: 2020年08月07日
+https://kali65536.github.io: 2020年08月08日
 https://hasaik.com: 2020年08月07日
 https://azusemisa.top: ERROR
 https://blog.justlovesmile.top: 2020年07月30日
