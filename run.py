@@ -17,7 +17,6 @@ header = [
 f = open('link.txt', 'r')
 # 读取友链链接
 links = str(f.read())
-print(links)
 links = links.replace('\n', '')
 links = links.replace('\r', '')
 print(links)
