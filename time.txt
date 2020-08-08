@@ -56,7 +56,7 @@
   times: 活跃时间未知
 - name: Sakura` Blogs
   times: 活跃时间未知
-- name: 页面没有找到 | Serok's Blog
+- name: Sakura` Blogs
   times: 活跃时间未知
 - name: ༺小张博客༻
   times: 2020年08月08日
