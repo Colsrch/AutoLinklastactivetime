@@ -29,7 +29,7 @@
 - name: Geniucker's Blog
   times: 2020年07月23日
 - name: 云玩家
-  times: 2020年08月08日
+  times: 2020年08月09日
 - name: Kongerの万事屋
   times: 2020年07月17日
 - name: Kongerの万事屋
@@ -45,7 +45,7 @@
 - name: JInterest
   times: 2020年08月09日
 - name: 稚昂长
-  times: 2020年08月05日
+  times: 2020年08月09日
 - name: 辣个人の小窝
   times: 2020年07月27日
 - name: Sakura` Blogs
