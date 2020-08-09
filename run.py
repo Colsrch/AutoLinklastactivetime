@@ -46,6 +46,7 @@ with open(file_name, 'w') as file_obj:
             time = time.replace('</updated>', '')
             if utime in time:
                 print(urls[i] + "不支持的时间格式（直接截取）")
+                name = name.replace('<title type="text">', '')
                 time = time.replace('-', '')
                 time = time[0:4] + '年' + time[4:6] + '月' + time[6:8] + '日'
                 print(urls[i] + '：' + time)
