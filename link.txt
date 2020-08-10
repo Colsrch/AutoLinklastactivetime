@@ -37,4 +37,5 @@ https://www.boolo.top,
 https://raycoder.me,
 https://lusuzi.github.io,
 https://pdoner.cn,
-https://heson.xyz
+https://heson.xyz,
+https://blog.cyfan.top
